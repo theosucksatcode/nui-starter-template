@@ -1,6 +1,6 @@
 <template>
-  <div>
+  <UApp>
     <NuxtRouteAnnouncer />
     Yooo welcome to my template ✌️
-  </div>
+  </UApp>
 </template>

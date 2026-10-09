@@ -37,14 +37,8 @@
 import type { NavigationMenuItem } from "@nuxt/ui";
 
 const route = useRoute();
-const { appName } = useAppConfig();
 
 const navItems: NavigationMenuItem[] = [
   { label: "Home", to: "/", icon: "i-ph-house", activeIcon: "i-ph-house-fill" },
 ];
-
-useSeoMeta({
-  title: () => route.meta.title as string,
-  titleTemplate: (title) => (title ? `${title} - ${appName}` : appName),
-});
 </script>

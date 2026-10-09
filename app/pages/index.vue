@@ -1,5 +1,5 @@
 <script setup lang="ts">
-definePageMeta({ title: "Layout looking sheeee 🔥" });
+definePageMeta({ title: "Your home" });
 </script>
 
 <template></template>

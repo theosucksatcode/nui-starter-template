@@ -1,4 +1,5 @@
 export default defineAppConfig({
+  appName: "NUI Starter Template",
   ui: {
     colors: {
       neutral: "neutral",

@@ -2,25 +2,27 @@
   <UDashboardGroup
     unit="rem"
     :persistent="false"
-    class="safe-padding gap-(--app-gap) flex-col-reverse tablet:flex-col laptop:flex-row"
+    class="safe-padding flex-col-reverse tablet:flex-col laptop:flex-row"
   >
     <!-- bottom/top nav for small-med viewports -->
-    <AppNav class="laptop:hidden bg-sky-400" />
+    <AppNav :items="navItems" class="laptop:hidden" />
 
     <!-- side nav for laptop and larger -->
-    <UDashboardSidebar
-      :default-size="16"
-      :toggle="false"
-      class="bg-amber-400"
-    />
+    <UDashboardSidebar :toggle="false">
+      <template #header>
+        <AppBrand />
+      </template>
 
-    <UDashboardPanel :ui="{ body: 'bg-emerald-400' }">
+      <AppNavMenu :items="navItems" orientation="vertical" />
+    </UDashboardSidebar>
+
+    <UDashboardPanel>
       <!-- header isnt visible for small-med viewports -->
       <template #header>
         <UDashboardNavbar
           :title="route.meta.title as string"
           :toggle="false"
-          class="hidden laptop:flex bg-violet-400"
+          class="hidden laptop:flex"
         />
       </template>
 
@@ -32,9 +34,17 @@
 </template>
 
 <script setup lang="ts">
+import type { NavigationMenuItem } from "@nuxt/ui";
+
 const route = useRoute();
+const { appName } = useAppConfig();
+
+const navItems: NavigationMenuItem[] = [
+  { label: "Home", to: "/", icon: "i-ph-house", activeIcon: "i-ph-house-fill" },
+];
 
 useSeoMeta({
-  title: route.meta.title as string,
+  title: () => route.meta.title as string,
+  titleTemplate: (title) => (title ? `${title} - ${appName}` : appName),
 });
 </script>

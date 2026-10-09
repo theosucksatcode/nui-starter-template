@@ -158,5 +158,27 @@ export default defineAppConfig({
         size: "lg",
       },
     },
+    // 3 properties below this comment transform the different layout sections into floating cards
+    dashboardSidebar: {
+      slots: {
+        root: "min-h-0",
+      },
+      variants: {
+        side: {
+          left: { root: "border-0" },
+          right: { root: "border-0" },
+        },
+      },
+    },
+    dashboardPanel: {
+      slots: {
+        root: "min-h-0 gap-(--app-gap)",
+      },
+    },
+    dashboardNavbar: {
+      slots: {
+        root: "border-b-0",
+      },
+    },
   },
 });

@@ -6,9 +6,24 @@
   --font-mono: "Geist Mono", monospace;
 }
 
+/* breakpoints are named here and nowhere else */
+@theme static {
+  --breakpoint-tablet: 48rem;
+  --breakpoint-laptop: 64rem;
+}
+
 :root {
   --ui-radius: 0.5rem;
   --ui-primary: black;
+  --app-gap: 0.75rem;
+}
+
+/* ensures content never touches the sides */
+@utility safe-padding {
+  padding-top: max(var(--app-gap), env(safe-area-inset-top));
+  padding-right: max(var(--app-gap), env(safe-area-inset-right));
+  padding-bottom: max(var(--app-gap), env(safe-area-inset-bottom));
+  padding-left: max(var(--app-gap), env(safe-area-inset-left));
 }
 
 :root,
